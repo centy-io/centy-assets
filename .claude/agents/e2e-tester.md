@@ -410,7 +410,7 @@ test.describe('Feature Name - Error Handling', () => {
 
   test('should handle network errors gracefully', async ({ page }) => {
     // Simulate network error
-    await page.route('/api/**', route => route.abort())
+    await page.route('/api/**', (route) => route.abort())
 
     await page.goto('/feature')
     await page.click('[data-testid="submit"]')
@@ -421,7 +421,7 @@ test.describe('Feature Name - Error Handling', () => {
   })
 
   test('should handle server errors (500)', async ({ page }) => {
-    await page.route('/api/endpoint', route =>
+    await page.route('/api/endpoint', (route) =>
       route.fulfill({ status: 500, body: 'Server error' })
     )
 
@@ -432,7 +432,7 @@ test.describe('Feature Name - Error Handling', () => {
   })
 
   test('should handle unauthorized access (401)', async ({ page }) => {
-    await page.route('/api/protected', route =>
+    await page.route('/api/protected', (route) =>
       route.fulfill({ status: 401, body: 'Unauthorized' })
     )
 
@@ -526,7 +526,7 @@ test.describe('Feature Name - Integration', () => {
 
   test('should integrate with external API', async ({ page }) => {
     // Mock external API
-    await page.route('https://api.external.com/**', route =>
+    await page.route('https://api.external.com/**', (route) =>
       route.fulfill({ status: 200, body: JSON.stringify({ data: 'mocked' }) })
     )
 
@@ -685,7 +685,7 @@ test.describe('Feature', () => {
 ```typescript
 // ❌ BAD: Hardcoded waits
 await page.click('[data-testid="submit"]')
-await new Promise(resolve => setTimeout(resolve, 2000))
+await new Promise((resolve) => setTimeout(resolve, 2000))
 
 // ✅ GOOD: Wait for specific conditions
 await page.click('[data-testid="submit"]')
@@ -1156,7 +1156,7 @@ async function authenticateUser(page: Page, user: User) {
 ### API Mocking
 
 ```typescript
-await page.route('/api/**', route => {
+await page.route('/api/**', (route) => {
   if (route.request().url().includes('/api/users')) {
     route.fulfill({ body: JSON.stringify(mockUsers) })
   } else {
