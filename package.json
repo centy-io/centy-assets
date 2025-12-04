@@ -4,10 +4,12 @@
   "description": "Centy brand assets - logos, icons, and design resources",
   "type": "module",
   "exports": {
-    "./logos/*": "./logos/*"
+    "./logos/*": "./logos/*",
+    "./favicons/*": "./favicons/*"
   },
   "files": [
-    "logos"
+    "logos",
+    "favicons"
   ],
   "scripts": {
     "lint": "eslint .",

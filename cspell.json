@@ -2,6 +2,6 @@
   "version": "0.2",
   "language": "en,he",
   "dictionaries": ["he"],
-  "words": ["centy", "pnpm", "husky", "eslint", "commitlint"],
+  "words": ["centy", "pnpm", "husky", "eslint", "commitlint", "favicons"],
   "ignorePaths": ["node_modules", "pnpm-lock.yaml"]
 }
